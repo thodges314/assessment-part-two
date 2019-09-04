@@ -39,7 +39,7 @@ const RoomBox = ({number, active, adults, children, onChange, onCheck}) => {
 		<div id = 'wrapper'>
 			{header(number, active, onCheck)}
 			<div id='selectors'>
-				{selector(active, adults ||1, {lineOne: 'Adults', lineTwo:'(18+)'}, [1, 2], onChange('adults'))}
+				{selector(active, adults || 1, {lineOne: 'Adults', lineTwo:'(18+)'}, [1, 2], onChange('adults'))}
 				{selector(active, children || 0, {lineOne: 'Children', lineTwo:'(0-17)'}, [0, 1, 2], onChange('children'))}
 			</div>
 			<style jsx>{`

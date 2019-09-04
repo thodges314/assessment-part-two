@@ -1,6 +1,8 @@
 import {Component} from 'react'
 import {RoomBox} from '../components'
 
+const MAX_ROOMS = 4
+
 class Selectors extends Component {
 	state = {
 		data: [{
@@ -39,7 +41,7 @@ class Selectors extends Component {
 		const {data} = this.state
 		const boxesArray = []
 
-		for(let i = 0; i < 4; i++) {
+		for(let i = 0; i < MAX_ROOMS; i++) {
 			boxesArray.push(
 				<RoomBox
 					active = {i < data.length}
