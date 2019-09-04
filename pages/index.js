@@ -11,7 +11,28 @@ class Selectors extends Component {
 
 	onCheck = index => event => {
 		const {target:{checked}} = event
-		console.log(index, checked)
+		if(checked) {
+			const {data} = this.state
+			const nextData = [...data]
+			for (let i = data.length; i <= index; i++){
+				nextData.push({adults: 1, children: 0})
+			}
+			this.setState({data: nextData})
+		} else {
+			this.setState(prevState => ({data: prevState.data.slice(0, index)}))
+		}
+	}
+
+	onChange = index => category => event => {
+		const {target:{value}} = event
+		const {data} = this.state
+		const nextData = [...data]
+		if (category === 'adults'){
+			nextData[index].adults = value
+		} else {
+			nextData[index].children = value
+		}
+		this.setState({data: nextData})
 	}
 
 	render () {
@@ -25,13 +46,12 @@ class Selectors extends Component {
 					number = {i + 1}
 					adults = {i < data.length ? data[i].adults : 1}
 					children = {i < data.length ? data[i].children : 0}
+					onChange = {this.onChange(i)}
 					onCheck = {this.onCheck(i)}
 				/>
 			)
 		}
 		
-		console.log(boxesArray)
-
 		return(
 			<div>{boxesArray}</div>
 		)
