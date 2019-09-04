@@ -11,6 +11,7 @@ const header = (number, active, onCheck) => (
 			font-family: Arial, Helvetica, sans-serif;
 			font-weight: ${active? 'bold':'normal'};
 			font-size: 16px;
+			border-radius: 10px 10px 0 0;
 		}
 		#text {
 			position: relative;
@@ -53,7 +54,7 @@ const RoomBox = ({number, active, adults, children, onChange, onCheck}) => {
 			<style jsx>{`
 			#wrapper {
 				border-radius: 15px;
-				border: 10px solid ${active ? '#e7e7e7' : '#cad0e0'};
+				border: 4px solid ${active ? '#e7e7e7' : '#cad0e0'};
 				display: flex;
 				flex-direction: column;
 				height: 110px;
