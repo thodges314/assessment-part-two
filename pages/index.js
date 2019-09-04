@@ -7,6 +7,7 @@ class Selectors extends Component {
 	state = {
 		data: []
 	}
+
 	componentDidMount() {
 		const defaultState = {
 			data: [{
@@ -66,16 +67,17 @@ class Selectors extends Component {
 		return(
 			<div>
 				{data.length > 0 && 
-				<Fragment>
-				<div id='boxesRow'>
-					{boxesArray}
-				</div>
-				<button
-					onClick={this.onClick}
-				>
-					Submit
-				</button>
-				</Fragment>}
+					<Fragment>
+						<div id='boxesRow'>
+							{boxesArray}
+						</div>
+						<button
+							onClick={this.onClick}
+						>
+							Submit
+						</button>
+					</Fragment>
+				}
 				<style jsx>{`
 					#boxesRow {
 						display: flex;
