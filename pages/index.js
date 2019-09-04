@@ -1,14 +1,20 @@
-import {Component} from 'react'
+import {Component, Fragment} from 'react'
 import {RoomBox} from '../components'
 
 const MAX_ROOMS = 4
 
 class Selectors extends Component {
 	state = {
-		data: [{
-			adults: 1,
-			children: 0
-		}]
+		data: []
+	}
+	componentDidMount() {
+		const defaultState = {
+			data: [{
+				adults: 1,
+				children: 0
+			}]
+		}
+		this.setState({ data: JSON.parse(window.localStorage.getItem('formData') || defaultState.data)})
 	}
 
 	onCheck = index => event => {
@@ -37,6 +43,8 @@ class Selectors extends Component {
 		this.setState({data: nextData})
 	}
 
+	onClick = () => window.localStorage.setItem('formData', JSON.stringify(this.state.data))
+
 	render () {
 		const {data} = this.state
 		const boxesArray = []
@@ -56,7 +64,30 @@ class Selectors extends Component {
 		}
 		
 		return(
-			<div>{boxesArray}</div>
+			<div>
+				{data.length > 0 && 
+				<Fragment>
+				<div id='boxesRow'>
+					{boxesArray}
+				</div>
+				<button
+					onClick={this.onClick}
+				>
+					Submit
+				</button>
+				</Fragment>}
+				<style jsx>{`
+					#boxesRow {
+						display: flex;
+						flex-wrap: wrap;
+					}
+					button {
+						font-size: 16px;
+						padding: 4px;
+						margin: 10px;
+					}
+				`}</style>
+			</div>
 		)
 	}
 }

@@ -51,6 +51,7 @@ const RoomBox = ({number, active, adults, children, onChange, onCheck}) => {
 				height: 150px;
 				width: 225px;
 				background: ${active? '#fff' : '#dadae2'};
+				margin: 10px;
 			}
 			#selectors {
 				display: flex;
