@@ -4,71 +4,72 @@ import {RoomBox} from '../components'
 const MAX_ROOMS = 4
 
 class Selectors extends Component {
-	state = {
-		data: []
-	}
+  state = {
+    data: []
+  }
 
-	componentDidMount() {
-		const defaultState = {
-			data: [
-				{
-					adults: 1,
-					children: 0
-				}
-			]
-		}
-		const oldData = window.localStorage.getItem('formData')
-		this.setState(
-			oldData
-				? {
-						data: JSON.parse(oldData)
-					}
-				: {
-						...defaultState
-					}
-		)
-	}
+  componentDidMount() {
+    const defaultState = {
+      data: [
+        {
+          adults: 1,
+          children: 0
+        }
+      ]
+    }
+    const oldData = window.localStorage.getItem("formData")
+    this.setState(
+      oldData
+        ? {
+            data: JSON.parse(oldData)
+          }
+        : {
+            ...defaultState
+          }
+    )
+  }
 
-	onCheck = index => event => {
-		const {
-			target: { checked }
-		} = event
-		if (checked) {
-			const { data } = this.state;
-			const nextData = [...data];
-			for (let i = data.length; i <= index; i++) {
-				nextData.push({ adults: 1, children: 0 });
-			}
-			this.setState({ data: nextData });
-		} else {
-			this.setState(prevState => ({
-				data: prevState.data.slice(0, index)
-			}))
-		}
-	}
+  onCheck = index => event => {
+    const {
+      target: { checked }
+    } = event
+    if (checked) {
+      const { data } = this.state
+      const nextData = [...data]
+      for (let i = data.length; i <= index; i++) {
+        nextData.push({ adults: 1, children: 0 })
+      }
+      this.setState({ data: nextData })
+    } else {
+      this.setState(prevState => ({
+        data: prevState.data.slice(0, index)
+      }))
+    }
+  }
 
-	onChange = index => category => event => {
-		const {
-			target: { value }
-		} = event
-		const { data } = this.state
-		const nextData = [...data]
-		if (category === 'adults') {
-			nextData[index].adults = value
-		} else {
-			nextData[index].children = value
-		}
-		this.setState({ data: nextData })
-	}
+  onChange = index => category => event => {
+    const {
+      target: { value }
+    } = event
+    const { data } = this.state
+    const nextData = [...data]
+    if (category === "adults") {
+      nextData[index].adults = value
+    } else {
+      nextData[index].children = value
+    }
+    this.setState({ data: nextData })
+  }
 
-	onClick = () => window.localStorage.setItem('formData', JSON.stringify(this.state.data))
+  onClick = () =>
+    window.localStorage.setItem('formData', JSON.stringify(this.state.data))
 
-	render () {
-		const {data} = this.state
-		const boxesArray = []
+  render() {
+    const { data } = this.state
+    const boxesArray = []
 
-		for(let i = 0; i < MAX_ROOMS; i++) {
-			boxesArray.push(
+    for (let i = 0; i < MAX_ROOMS; i++) {
+      boxesArray.push(
         <RoomBox
           active={i < data.length}
           adults={i < data.length ? data[i].adults : 1}
@@ -79,13 +80,13 @@ class Selectors extends Component {
           onCheck={this.onCheck(i)}
         />
       )
-		}
-		
-		return (
+    }
+
+    return (
       <div>
         {data.length > 0 && (
           <Fragment>
-            <div id='boxesRow'>{boxesArray}</div>
+            <div id="boxesRow">{boxesArray}</div>
             <button onClick={this.onClick}>Submit</button>
           </Fragment>
         )}
@@ -102,7 +103,7 @@ class Selectors extends Component {
         `}</style>
       </div>
     )
-	}
+  }
 }
 
 export default Selectors
