@@ -76,7 +76,7 @@ const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
         #wrapper {
           background: ${active ? '#fff' : '#dadae2'};
           border-radius: 15px;
-          border: 4px solid ${active ? '#e7e7e7' : '#cad0e0'};ß
+          border: 4px solid ${active ? '#e7e7e7' : '#cad0e0'};
           display: flex;
           flex-direction: column;
           height: 130px;
