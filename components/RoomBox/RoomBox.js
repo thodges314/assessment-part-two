@@ -1,13 +1,20 @@
 const header = (number, active, onCheck) => (
 	<div id='header'>
 		{(number > 1) && <input type='checkbox' checked={!!active} onChange={onCheck}/>}
-		Room {number}
+		<span id='text'>Room {number}</span>
 		<style jsx>{`
 		#header {
 			background: ${active? '#e7e7e7' : '#dadae2'};
 			padding-bottom: 10px;
+			padding-left: 4px;
+			padding-top: 4px;
 			font-family: Arial, Helvetica, sans-serif;
-			font-weight: ${active? 'bold':'normal'}
+			font-weight: ${active? 'bold':'normal'};
+			font-size: 16px;
+		}
+		#text {
+			position: relative;
+			top: 1.2px;
 		}
 		`}</style>
 	</div>
@@ -26,7 +33,8 @@ const selector = (active, count, title, values, onChange) => {
 				#selector {
 					display: flex;
 					flex-direction: column;
-					width: 90px;
+					justify-content: space-around;
+					width: 70px;
 				}
 			`}</style>
 		</div>
@@ -48,8 +56,8 @@ const RoomBox = ({number, active, adults, children, onChange, onCheck}) => {
 				border: 10px solid ${active ? '#e7e7e7' : '#cad0e0'};
 				display: flex;
 				flex-direction: column;
-				height: 150px;
-				width: 225px;
+				height: 110px;
+				width: 185px;
 				background: ${active? '#fff' : '#dadae2'};
 				margin: 10px;
 			}
@@ -57,6 +65,7 @@ const RoomBox = ({number, active, adults, children, onChange, onCheck}) => {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-around;
+				height: 70px;
 			}
 			`}</style>
 		</div>
