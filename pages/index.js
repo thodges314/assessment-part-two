@@ -15,7 +15,8 @@ class Selectors extends Component {
 				children: 0
 			}]
 		}
-		this.setState({ data: JSON.parse(window.localStorage.getItem('formData') || defaultState.data)})
+		const oldData = window.localStorage.getItem('formData')
+		this.setState({ data: oldData ? JSON.parse(oldData) : defaultState.data})
 	}
 
 	onCheck = index => event => {
