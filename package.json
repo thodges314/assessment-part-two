@@ -1,0 +1,19 @@
+{
+  "name": "assessment-part-two",
+  "version": "1.0.0",
+  "description": "Hilton Assessment part 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/thodges314/assessment-part-two.git"
+  },
+  "author": "Thomas Hodges",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thodges314/assessment-part-two/issues"
+  },
+  "homepage": "https://github.com/thodges314/assessment-part-two#readme"
+}
