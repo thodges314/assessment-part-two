@@ -1,6 +1,6 @@
 const header = (number, active, onCheck) => (
 	<div id='header'>
-		{(number > 1) && <input type='checkbox' checked={active || false}/>}
+		{(number > 1) && <input type='checkbox' checked={active || false} onChange={onCheck}/>}
 		Room {number}
 		<style jsx>{`
 		#header {
