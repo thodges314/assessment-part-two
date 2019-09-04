@@ -17,7 +17,7 @@ class Selectors extends Component {
         }
       ]
     }
-    const oldData = window.localStorage.getItem("formData")
+    const oldData = window.localStorage.getItem('formData')
     this.setState(
       oldData
         ? {
@@ -53,7 +53,7 @@ class Selectors extends Component {
     } = event
     const { data } = this.state
     const nextData = [...data]
-    if (category === "adults") {
+    if (category === 'adults') {
       nextData[index].adults = value
     } else {
       nextData[index].children = value
@@ -86,7 +86,7 @@ class Selectors extends Component {
       <div>
         {data.length > 0 && (
           <Fragment>
-            <div id="boxesRow">{boxesArray}</div>
+            <div id='boxesRow'>{boxesArray}</div>
             <button onClick={this.onClick}>Submit</button>
           </Fragment>
         )}
