@@ -14,7 +14,7 @@ const header = (number, active, onCheck) => (
 )
 
 const selector = (active, count, title, values, onChange) => {
-	const options = values.map(value => <option value={value}>{value}</option>)
+	const options = values.map(value => <option value={value} key={value}>{value}</option>)
 	return (
 		<div id='selector'>
 			<div>{title.lineOne}</div>

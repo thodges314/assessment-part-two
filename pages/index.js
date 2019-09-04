@@ -48,6 +48,7 @@ class Selectors extends Component {
 					children = {i < data.length ? data[i].children : 0}
 					onChange = {this.onChange(i)}
 					onCheck = {this.onCheck(i)}
+					key = {i}
 				/>
 			)
 		}
