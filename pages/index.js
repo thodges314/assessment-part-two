@@ -1,16 +1,33 @@
+import {Component} from 'react'
 import {RoomBox} from '../components'
 
-export default () => <div>
-	<RoomBox
-		active 
-		number = '1'
-	/>
-	<RoomBox
-		active
-		number='2'
-	/>
-	<RoomBox
-		number='3'
-	/>
-	Boilderplate here!
-	</div>
+class Selectors extends Component {
+	state = {
+		data: [{
+			adults: 1,
+			children: 0
+		}]
+	}
+
+	render () {
+		const {data} = this.state
+		let boxesArray = []
+
+		for(let i = 0; i < 4; i++) {
+			boxesArray.push(
+				<RoomBox
+					active = {i < data.length}
+					number = {i + 1}
+				/>
+			)
+		}
+		
+		console.log(boxesArray)
+
+		return(
+			<div>{boxesArray}</div>
+		)
+	}
+}
+
+export default Selectors

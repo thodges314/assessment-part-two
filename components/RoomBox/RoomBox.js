@@ -1,6 +1,6 @@
 const header = (number, active, onCheck) => (
 	<div id='header'>
-		{(number > 1) && <input type='checkbox' checked={active}/>}
+		{(number > 1) && <input type='checkbox' checked={active || false}/>}
 		Room {number}
 		<style jsx>{`
 		#header {
@@ -39,8 +39,8 @@ const RoomBox = ({number, active, adults, children, onChange, onCheck}) => {
 		<div id = 'wrapper'>
 			{header(number, active, onCheck)}
 			<div id='selectors'>
-				{selector(active, adults, {lineOne: 'Adults', lineTwo:'(18+)'}, [1, 2])}
-				{selector(active, children, {lineOne: 'Children', lineTwo:'(0-17)'}, [0, 1, 2])}
+				{selector(active, adults ||1, {lineOne: 'Adults', lineTwo:'(18+)'}, [1, 2], onChange)}
+				{selector(active, children || 0, {lineOne: 'Children', lineTwo:'(0-17)'}, [0, 1, 2], onChange)}
 			</div>
 			<style jsx>{`
 			#wrapper {
