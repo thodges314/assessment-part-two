@@ -6,7 +6,7 @@ const header = (number, active, onCheck) => (
 		#header {
 			background: ${active? '#e7e7e7' : '#dadae2'};
 			padding-bottom: 10px;
-			padding-left: ${number === 1 ? '5px':'4px'};
+			padding-left: 4px;
 			padding-top: 4px;
 			font-family: Arial, Helvetica, sans-serif;
 			font-weight: ${active? 'bold':'normal'};
@@ -17,6 +17,7 @@ const header = (number, active, onCheck) => (
 		#text {
 			position: relative;
 			top: 1.2px;
+			margin-left: 2px;
 		}
 		`}</style>
 	</div>
