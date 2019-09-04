@@ -12,6 +12,7 @@ const header = (number, active, onCheck) => (
 			font-weight: ${active? 'bold':'normal'};
 			font-size: 16px;
 			border-radius: 10px 10px 0 0;
+			margin-bottom: 5px;
 		}
 		#text {
 			position: relative;
@@ -57,7 +58,7 @@ const RoomBox = ({number, active, adults, children, onChange, onCheck}) => {
 				border: 4px solid ${active ? '#e7e7e7' : '#cad0e0'};
 				display: flex;
 				flex-direction: column;
-				height: 110px;
+				height: 130px;
 				width: 185px;
 				background: ${active? '#fff' : '#dadae2'};
 				margin: 10px;
@@ -66,7 +67,7 @@ const RoomBox = ({number, active, adults, children, onChange, onCheck}) => {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-around;
-				height: 70px;
+				height: 80px;
 			}
 			`}</style>
 		</div>
