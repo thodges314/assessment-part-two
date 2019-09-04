@@ -59,14 +59,14 @@ const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
       <div id='selectors'>
         {selector(
           active,
-          adults || 1,
+          adults,
           { lineOne: 'Adults', lineTwo: '(18+)' },
           [1, 2],
           onChange('adults')
         )}
         {selector(
           active,
-          children || 0,
+          children,
           { lineOne: 'Children', lineTwo: '(0-17)' },
           [0, 1, 2],
           onChange('children')
