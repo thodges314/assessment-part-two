@@ -36,7 +36,7 @@ const selector = (active, count, title, values, onChange) => {
 					display: flex;
 					flex-direction: column;
 					justify-content: space-around;
-					width: 70px;
+					width: 60px;
 				}
 			`}</style>
 		</div>
