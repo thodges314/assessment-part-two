@@ -18,14 +18,14 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
     return (
-			<div>
-			<Head>
-				<title>Hilton Assessment Part 2</title>
-			</Head>
-				<Component {...pageProps} />
-			</div>
-			)	
-		}
+      <div>
+        <Head>
+          <title>Hilton Assessment Part 2</title>
+        </Head>
+        <Component {...pageProps} />
+      </div>
+    )
+  }
 }
 
 export default MyApp

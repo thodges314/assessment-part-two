@@ -10,39 +10,55 @@ class Selectors extends Component {
 
 	componentDidMount() {
 		const defaultState = {
-			data: [{
-				adults: 1,
-				children: 0
-			}]
+			data: [
+				{
+					adults: 1,
+					children: 0
+				}
+			]
 		}
 		const oldData = window.localStorage.getItem('formData')
-		this.setState({ data: oldData ? JSON.parse(oldData) : defaultState.data})
+		this.setState(
+			oldData
+				? {
+						data: JSON.parse(oldData)
+					}
+				: {
+						...defaultState
+					}
+		)
 	}
 
 	onCheck = index => event => {
-		const {target:{checked}} = event
-		if(checked) {
-			const {data} = this.state
-			const nextData = [...data]
-			for (let i = data.length; i <= index; i++){
-				nextData.push({adults: 1, children: 0})
+		const {
+			target: { checked }
+		} = event
+		if (checked) {
+			const { data } = this.state;
+			const nextData = [...data];
+			for (let i = data.length; i <= index; i++) {
+				nextData.push({ adults: 1, children: 0 });
 			}
-			this.setState({data: nextData})
+			this.setState({ data: nextData });
 		} else {
-			this.setState(prevState => ({data: prevState.data.slice(0, index)}))
+			this.setState(prevState => ({
+				data: prevState.data.slice(0, index)
+			}))
 		}
 	}
 
 	onChange = index => category => event => {
-		const {target:{value}} = event
-		const {data} = this.state
+		const {
+			target: { value }
+		} = event
+		const { data } = this.state
 		const nextData = [...data]
-		if (category === 'adults'){
+		if (category === 'adults') {
 			nextData[index].adults = value
 		} else {
 			nextData[index].children = value
 		}
-		this.setState({data: nextData})
+		this.setState({ data: nextData })
 	}
 
 	onClick = () => window.localStorage.setItem('formData', JSON.stringify(this.state.data))
@@ -53,45 +69,39 @@ class Selectors extends Component {
 
 		for(let i = 0; i < MAX_ROOMS; i++) {
 			boxesArray.push(
-				<RoomBox
-					active = {i < data.length}
-					number = {i + 1}
-					adults = {i < data.length ? data[i].adults : 1}
-					children = {i < data.length ? data[i].children : 0}
-					onChange = {this.onChange(i)}
-					onCheck = {this.onCheck(i)}
-					key = {i}
-				/>
-			)
+        <RoomBox
+          active={i < data.length}
+          adults={i < data.length ? data[i].adults : 1}
+          children={i < data.length ? data[i].children : 0}
+          key={i}
+          number={i + 1}
+          onChange={this.onChange(i)}
+          onCheck={this.onCheck(i)}
+        />
+      )
 		}
 		
-		return(
-			<div>
-				{data.length > 0 && 
-					<Fragment>
-						<div id='boxesRow'>
-							{boxesArray}
-						</div>
-						<button
-							onClick={this.onClick}
-						>
-							Submit
-						</button>
-					</Fragment>
-				}
-				<style jsx>{`
-					#boxesRow {
-						display: flex;
-						flex-wrap: wrap;
-					}
-					button {
-						font-size: 16px;
-						padding: 4px;
-						margin: 10px;
-					}
-				`}</style>
-			</div>
-		)
+		return (
+      <div>
+        {data.length > 0 && (
+          <Fragment>
+            <div id='boxesRow'>{boxesArray}</div>
+            <button onClick={this.onClick}>Submit</button>
+          </Fragment>
+        )}
+        <style jsx>{`
+          #boxesRow {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          button {
+            font-size: 16px;
+            margin: 10px;
+            padding: 4px;
+          }
+        `}</style>
+      </div>
+    )
 	}
 }
 
