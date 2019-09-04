@@ -4,7 +4,10 @@
   "description": "Hilton Assessment part 2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/thodges314/assessment-part-two/issues"
   },
-  "homepage": "https://github.com/thodges314/assessment-part-two#readme"
+  "homepage": "https://github.com/thodges314/assessment-part-two#readme",
+  "dependencies": {
+    "next": "^9.0.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
 }
