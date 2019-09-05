@@ -96,8 +96,14 @@ const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
 
 RoomBox.propTypes = {
 	active: PropTypes.bool.isRequired,
-	adults: PropTypes.number.isRequired,
-	children: PropTypes.number.isRequired,
+	adults: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
+	]).isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
+	]).isRequired,
 	number: PropTypes.number.isRequired,
 	onChange: PropTypes.func.isRequired,
 	onCheck: PropTypes.func.isRequired
