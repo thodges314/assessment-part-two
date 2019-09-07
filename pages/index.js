@@ -1,5 +1,6 @@
-import {Component, Fragment} from 'react'
+import {Component} from 'react'
 import {RoomBox} from '../components'
+import styled from 'styled-components'
 
 const MAX_ROOMS = 4
 
@@ -85,25 +86,26 @@ class Selectors extends Component {
     return (
       <div>
         {data.length > 0 && (
-          <Fragment>
+          <StyledBoxesAndButton>
             <div id='boxesRow'>{boxesArray}</div>
             <button onClick={this.onClick}>Submit</button>
-          </Fragment>
+          </StyledBoxesAndButton>
         )}
-        <style jsx>{`
-          #boxesRow {
-            display: flex;
-            flex-wrap: wrap;
-          }
-          button {
-            font-size: 16px;
-            margin: 10px;
-            padding: 4px;
-          }
-        `}</style>
       </div>
     )
   }
 }
+
+const StyledBoxesAndButton = styled.div`
+  #boxesRow {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  button {
+    font-size: 16px;
+    margin: 10px;
+    padding: 4px;
+  }
+`
 
 export default Selectors

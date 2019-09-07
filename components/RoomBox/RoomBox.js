@@ -1,30 +1,13 @@
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const header = (active, number, onCheck) => (
-  <div id='header'>
+  <StyledHeader active={active}>
     {number > 1 && (
       <input type='checkbox' checked={!!active} onChange={onCheck} />
     )}
     <span id='text'>Room {number}</span>
-    <style jsx>{`
-      #header {
-        background: ${active ? '#e7e7e7' : '#dadae2'};
-        border-radius: 10px 10px 0 0;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-        font-weight: ${active ? 'bold' : 'normal'};
-        margin-bottom: 5px;
-        padding-bottom: 10px;
-        padding-left: 4px;
-        padding-top: 4px;
-      }
-      #text {
-        margin-left: 2px;
-        position: relative;
-        top: 1.2px;
-      }
-    `}</style>
-  </div>
+  </StyledHeader>
 )
 
 const selector = (active, count, title, values, onChange) => {
@@ -34,27 +17,19 @@ const selector = (active, count, title, values, onChange) => {
     </option>
   ))
   return (
-    <div id='selector'>
+    <StyledSelector active>
       <div>{title.lineOne}</div>
       <div>{title.lineTwo}</div>
       <select disabled={!active} value={count} onChange={onChange}>
         {options}
       </select>
-      <style jsx>{`
-        #selector {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          width: 60px;
-        }
-      `}</style>
-    </div>
+    </StyledSelector>
   )
 }
 
 const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
   return (
-    <div id='wrapper'>
+    <StyledRoomBox active={active}>
       {header(active, number, onCheck)}
       <div id='selectors'>
         {selector(
@@ -72,27 +47,50 @@ const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
           onChange('children')
         )}
       </div>
-      <style jsx>{`
-        #wrapper {
-          background: ${active ? '#fff' : '#dadae2'};
-          border-radius: 15px;
-          border: 4px solid ${active ? '#e7e7e7' : '#cad0e0'};
-          display: flex;
-          flex-direction: column;
-          height: 130px;
-          margin: 10px;
-          width: 185px;
-        }
-        #selectors {
-          display: flex;
-          flex-direction: row;
-          height: 80px;
-          justify-content: space-around;
-        }
-      `}</style>
-    </div>
+    </StyledRoomBox>
   )
 }
+
+const StyledHeader = styled.div`
+  background: ${props => props.active ? '#e7e7e7' : '#dadae2'};
+  border-radius: 10px 10px 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: ${props => props.active ? 'bold' : 'normal'};
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  padding-left: 4px;
+  padding-top: 4px;
+  #text {
+    margin-left: 2px;
+    position: relative;
+    top: 1.2px;
+  }
+`
+
+const StyledSelector = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 60px;
+`
+
+const StyledRoomBox = styled.div`
+  background: ${props => props.active ? '#fff' : '#dadae2'};
+  border-radius: 15px;
+  border: 4px solid ${props => props.active ? '#e7e7e7' : '#cad0e0'};
+  display: flex;
+  flex-direction: column;
+  height: 130px;
+  margin: 10px;
+  width: 185px;
+  #selectors {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    justify-content: space-around;
+  }
+`
 
 RoomBox.propTypes = {
 	active: PropTypes.bool.isRequired,
