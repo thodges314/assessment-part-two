@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "dev": "NODE_PATH=. next",
+    "build": "NODE_PATH=. next build",
+    "start": "NODE_PATH=. next start"
   },
   "repository": {
     "type": "git",

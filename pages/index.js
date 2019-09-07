@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {RoomBox} from '../components'
+import {RoomBox} from 'components'
 import styled from 'styled-components'
 
 const MAX_ROOMS = 4

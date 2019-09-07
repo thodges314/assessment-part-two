@@ -11,7 +11,7 @@ const header = (active, number, onCheck) => (
 )
 
 const selector = (active, count, title, values, onChange) => {
-	const options = values.map(value => (
+  const options = values.map(value => (
     <option value={value} key={value}>
       {value}
     </option>
@@ -93,18 +93,18 @@ const StyledRoomBox = styled.div`
 `
 
 RoomBox.propTypes = {
-	active: PropTypes.bool.isRequired,
-	adults: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string
-	]).isRequired,
-	children: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string
-	]).isRequired,
-	number: PropTypes.number.isRequired,
-	onChange: PropTypes.func.isRequired,
-	onCheck: PropTypes.func.isRequired
+  active: PropTypes.bool.isRequired,
+  adults: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]).isRequired,
+  number: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onCheck: PropTypes.func.isRequired
 }
 
 export default RoomBox
