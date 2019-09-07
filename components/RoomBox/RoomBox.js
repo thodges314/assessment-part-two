@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import theme from 'theme'
+
+const {colors} = theme
 
 const header = (active, number, onCheck) => (
   <StyledHeader active={active}>
@@ -52,7 +55,7 @@ const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
 }
 
 const StyledHeader = styled.div`
-  background: ${props => props.active ? '#e7e7e7' : '#dadae2'};
+  background: ${props => props.active ? colors.lightGrey : colors.blueGrey};
   border-radius: 10px 10px 0 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -76,9 +79,9 @@ const StyledSelector = styled.div`
 `
 
 const StyledRoomBox = styled.div`
-  background: ${props => props.active ? '#fff' : '#dadae2'};
+  background: ${props => props.active ? colors.white : colors.blueGrey};
   border-radius: 15px;
-  border: 4px solid ${props => props.active ? '#e7e7e7' : '#cad0e0'};
+  border: 4px solid ${props => props.active ? colors.lightGrey : colors.darkBlueGrey};
   display: flex;
   flex-direction: column;
   height: 130px;
