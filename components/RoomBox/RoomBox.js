@@ -7,13 +7,13 @@ const {colors} = theme
 const header = (active, number, onCheck) => (
   <StyledHeader active={active}>
     {number > 1 && (
-      <input type='checkbox' checked={!!active} onChange={onCheck} data-testid={'active-checkbox'}/>
+      <input type='checkbox' checked={!!active} onChange={onCheck} data-testid={`box${number}-active-checkbox`}/>
     )}
     <span id='text'>Room {number}</span>
   </StyledHeader>
 )
 
-const selector = (active, count, title, values, onChange) => {
+const selector = (active, count, number, title, values, onChange) => {
   const options = values.map(value => (
     <option value={value} key={value}>
       {value}
@@ -23,7 +23,7 @@ const selector = (active, count, title, values, onChange) => {
     <StyledSelector active>
       <div>{title.lineOne}</div>
       <div>{title.lineTwo}</div>
-      <select disabled={!active} value={count} onChange={onChange} data-testid={`${title.lineOne}-selector`}>
+      <select disabled={!active} value={count} onChange={onChange} data-testid={`box${number}-${title.lineOne}-selector`}>
         {options}
       </select>
     </StyledSelector>
@@ -38,6 +38,7 @@ const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
         {selector(
           active,
           adults,
+          number,
           { lineOne: 'Adults', lineTwo: '(18+)' },
           [1, 2],
           onChange('adults')
@@ -45,6 +46,7 @@ const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
         {selector(
           active,
           children,
+          number,
           { lineOne: 'Children', lineTwo: '(0-17)' },
           [0, 1, 2],
           onChange('children')
