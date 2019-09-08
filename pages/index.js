@@ -87,7 +87,7 @@ class Selectors extends Component {
       <div>
         {data.length > 0 && (
           <StyledBoxesAndButton>
-            <div id='boxesRow'>{boxesArray}</div>
+            <div id='boxesRow' data-testid='boxes-row'>{boxesArray}</div>
             <button onClick={this.onClick}>Submit</button>
           </StyledBoxesAndButton>
         )}

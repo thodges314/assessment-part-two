@@ -7,7 +7,7 @@ const {colors} = theme
 const header = (active, number, onCheck) => (
   <StyledHeader active={active}>
     {number > 1 && (
-      <input type='checkbox' checked={!!active} onChange={onCheck} />
+      <input type='checkbox' checked={!!active} onChange={onCheck} data-testid={'active-checkbox'}/>
     )}
     <span id='text'>Room {number}</span>
   </StyledHeader>
@@ -23,7 +23,7 @@ const selector = (active, count, title, values, onChange) => {
     <StyledSelector active>
       <div>{title.lineOne}</div>
       <div>{title.lineTwo}</div>
-      <select disabled={!active} value={count} onChange={onChange}>
+      <select disabled={!active} value={count} onChange={onChange} data-testid={`${title.lineOne}-selector`}>
         {options}
       </select>
     </StyledSelector>
