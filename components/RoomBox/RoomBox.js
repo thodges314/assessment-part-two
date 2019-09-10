@@ -30,31 +30,29 @@ const selector = (active, count, number, title, values, onChange) => {
   )
 }
 
-const RoomBox = ({active, adults, children, number, onChange, onCheck}) => {
-  return (
-    <StyledRoomBox active={active}>
-      {header(active, number, onCheck)}
-      <div id='selectors'>
-        {selector(
-          active,
-          adults,
-          number,
-          { lineOne: 'Adults', lineTwo: '(18+)' },
-          [1, 2],
-          onChange('adults')
-        )}
-        {selector(
-          active,
-          children,
-          number,
-          { lineOne: 'Children', lineTwo: '(0-17)' },
-          [0, 1, 2],
-          onChange('children')
-        )}
-      </div>
-    </StyledRoomBox>
-  )
-}
+const RoomBox = ({active, adults, children, number, onChange, onCheck}) => (
+  <StyledRoomBox active={active}>
+    {header(active, number, onCheck)}
+    <div id='selectors'>
+      {selector(
+        active,
+        adults,
+        number,
+        { lineOne: 'Adults', lineTwo: '(18+)' },
+        [1, 2],
+        onChange('adults')
+      )}
+      {selector(
+        active,
+        children,
+        number,
+        { lineOne: 'Children', lineTwo: '(0-17)' },
+        [0, 1, 2],
+        onChange('children')
+      )}
+    </div>
+  </StyledRoomBox>
+)
 
 const StyledHeader = styled.div`
   background: ${props => props.active ? colors.lightGrey : colors.blueGrey};
