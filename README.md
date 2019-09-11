@@ -38,6 +38,17 @@ One of the things that I did was to define an absolute structure for imports beg
     "start": "next start"
   }
   ```
-I have also used a structure of _index.js_ files int heprojects directory to simplify that process.
+I have also used a structure of _index.js_ files in the projects directory to simplify that process.
 
-I have also created an _\_app.js_ file for top level styling, which in this case consisted of accessing the root header and setting _title_ for the tab title.  This would also be a place to put some global styling, or to implement things like a custom header component that is used app-wide.
+I have also created an _\_app.js_ file for top level styling, which in this case consisted of accessing the root header and setting _title_ for the tab title.  This would also be a place to put some global styling, or to implement things like a route to a custom header component that is used app-wide.
+
+Finally, notice that I created a color theme object in a theme directory in the project root.  This is to emulate the standard practice of storing colors and so on in a central file to make it easier to manage the styles across a large webapp and make sure that everything is consistant.  This is also a place that one might place font styling or materialui tweaks.  In this case, I have only used it for colors.
+
+### solving the problem
+In solving this project, I tried to take into consideration what I expected data might look like coming from backend, or how it might be sent to backend.  I assumed, in it's simplest form, an array of one or more room objects with 'adults' and 'children' memebrs designating the numbers of each of those two in the respective room.  So, when I add rooms I add entries to the array of rooms (with default values) and when I remove rooms I remove entries from the room array.  What is rendered on the screen is an exact representation of the room array stored in state.
+
+For an individual room, I created a seperate stateless controlled styled component that displays the given room number, an optional checkbox to activae or deactivate that room selection, and dropdowns to select the number of adults or children in that room. (The deactivation checkbox is unavailable on room 1).  When a room is deactivated, the drop down selectors are deactivated and the room box changes style.  You will notice that I tried to match the style on the mock as closely as possible.
+
+The selectors and click handlers are arrow functions originating from the main page, and therefore executing in the context of and accessing the state of the main page.  I used currying to pass a click handler to pass to each room box a checkbox click handler hard wired with the respective room number.  For selectors, I pass in a curried function that is wired with the room number, and upon entering the _RoomBox_ component, attaches to each selector wired with the name of the field it is handling (either adults or children).
+
+You will notice that in the _index.js_ file, I look for data stored in local storage (from previous times that the app may have been used) before displaying any room panels.  If we were working with redux calls before displaying those panels then it may be useful to display some kind of loading animation, but since we are only reaching out to local storage I didn't deem that necessary.
