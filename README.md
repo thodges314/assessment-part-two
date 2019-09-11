@@ -48,7 +48,7 @@ One of the things that I did was to define an absolute structure for imports beg
   ```
 I have also used a structure of _index.js_ files in the projects directory to simplify that process.
 
-I have also created an _\_app.js_ file for top level styling, which in this case consisted of accessing the root header and setting _title_ for the tab title.  This would also be a place to put some global styling, or to implement things like a route to a custom header component that is used app-wide.
+I have created an _\_app.js_ file for top level styling, which in this case consisted of accessing the root header and setting _title_ for the tab title.  This would also be a place to put some global styling, or to implement things like a route to a custom header component that is used app-wide.
 
 Finally, notice that I created a color theme object in a theme directory in the project root.  This is to emulate the standard practice of storing colors and so on in a central file to make it easier to manage the styles across a large webapp and make sure that everything is consistant.  This is also a place that one might place font styling or materialui tweaks.  In this case, I have only used it for colors.
 
