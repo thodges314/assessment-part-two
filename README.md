@@ -28,7 +28,7 @@ Run the project locally:
 
 Open your browser to _localhost:3000_.
 
-Follow the steps written in the project description to ensure that this app behaves as expected.  You will find that, if you have changed patron counts for your rooms, hit submit, and then closed and reopened your localhost tab, or even stopped and restarted the webapp __in any given browser__ that your settings will be preserved from one instance to another.  Data is not preserved cross-browser because this would require server storage and a login.
+Follow the steps written in the project description to ensure that this app behaves as expected.  You will find that, if you have changed patron counts for your rooms, hit submit, and then have closed and reopened your localhost tab, or even stopped and restarted the webapp __in any given browser__ that your settings will be preserved from one instance to another.  Data is not preserved cross-browser because this would require server storage and a login.
 
 Formal testing is done with _react-testing-library_, a library endorsed (and created?) by the famous Kent C. Dodds.  While I have not had the opportunity to attend one of his online seminars, I have done my best with his testing libraries.
 
